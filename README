@@ -4,8 +4,7 @@ A Ruby library for interacting with system-level MIDI services.
 
 == Authors
 
- * Ben Bleything
- * Topher Cyll
+ * Ben Bleything <ben@bleything.net>
 
 == General Information
 
@@ -17,6 +16,21 @@ up my modifications to the book's code and release it as a gem.
 
 Whether it will be valuable to anybody but myself remains to be seen, but I'm
 hopeful that someone will find a use for this code.
+
+== Features
+
+None yet?
+
+== Synopsis
+
+Coming soon!
+
+== Credits
+
+Huge, huge credit goes to Topher Cyll, without whom I would have had to figure
+all of this crap out for myself.  Apress also deserves some credit; they
+released all the source in their book under the MIT license.  That's a big
+deal and you should buy their books.
 
 == License
 
