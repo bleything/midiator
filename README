@@ -1,0 +1,24 @@
+= MIDIator
+
+A Ruby library for interacting with system-level MIDI services.
+
+== Authors
+
+ * Ben Bleything
+ * Topher Cyll
+
+== General Information
+
+MIDIator was inspired by Topher Cyll's fantastic Practical Ruby Projects book.
+In it, Topher describes how to interact with the MIDI providers in OSX, Linux,
+and Windows.  As I was reading the book, I noticed some things I would do
+differently, which got me thinking that maybe it would be valuable to package
+up my modifications to the book's code and release it as a gem.
+
+Whether it will be valuable to anybody but myself remains to be seen, but I'm
+hopeful that someone will find a use for this code.
+
+== License
+
+Distributed under the terms of the BSD license.  See the LICENSE file for
+complete text and details.
