@@ -20,3 +20,4 @@ module MIDIator
 end
 
 require 'midiator/driver'
+require 'midiator/driver_registry'
