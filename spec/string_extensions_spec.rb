@@ -16,8 +16,6 @@
 
 require File.join(File.dirname(__FILE__),"spec_helper.rb")
 
-require 'string_extensions'
-
 describe "MIDIator's extensions to Ruby's String class" do
 	it "converts under_scored strings to CamelCase" do
 		"this_is_some_strings".camelize.should == "ThisIsSomeStrings"

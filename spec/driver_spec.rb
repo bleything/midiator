@@ -15,10 +15,6 @@
 
 require File.join(File.dirname(__FILE__),"spec_helper.rb")
 
-require 'midiator'
-require 'midiator/driver'
-require 'midiator/driver_registry'
-
 describe MIDIator::Driver do
 	it "automatically registers subclasses" do
 		SomeCoolDriver = Class.new
