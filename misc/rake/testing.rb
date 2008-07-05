@@ -11,10 +11,6 @@
 # Copyright (c) 2008 LAIKA, Inc.
 # 
 # This code released under the terms of the BSD license.
-# 
-# == Version
-#
-#  $Id$
 #
 
 require 'spec/rake/spectask'

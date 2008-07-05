@@ -13,10 +13,6 @@
 #
 # This code released under the terms of the BSD license.
 #
-# == Version
-#
-#  $Id$
-#
 
 require File.join(File.dirname(__FILE__),"spec_helper.rb")
 

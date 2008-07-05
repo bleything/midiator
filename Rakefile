@@ -12,10 +12,6 @@
 #
 # This code released under the terms of the BSD license.
 #
-# == Version
-#
-# $Id$
-#
 
 require 'pathname'
 require 'rubygems'
