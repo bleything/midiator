@@ -15,16 +15,31 @@
 
 require File.join(File.dirname(__FILE__),"spec_helper.rb")
 
-require 'midiator'
-require 'midiator/driver_registry'
-
-# The real MIDIator::Driver auto-registers any class that inherits from it, so
-# we must re-open the class and disable that behavior.
-class MIDIator::Driver
-	def self::inherited( klass ) ; end
-end
-
 describe MIDIator::DriverRegistry do
+	before( :all ) do
+		# alias MIDIator::Driver's inherited method out of the way and
+		# redefine it as a no-op.  This prevents MIDIator::Driver from trying
+		# to auto-register subclasses.
+		MIDIator::Driver.instance_eval {
+			class << self
+				alias_method :old_inherited, :inherited
+			end
+			
+			def self::inherited( klass )
+				# no-op
+			end
+		}
+	end
+	
+	after( :all ) do
+		# move MIDIator::Driver's inherited method back into place
+		MIDIator::Driver.instance_eval {
+			class << self
+				alias_method :inherited, :old_inherited
+			end
+		}
+	end
+
 	before( :each ) do
 		@registry = MIDIator::DriverRegistry.instance
 		
