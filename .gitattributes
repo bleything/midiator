@@ -1,2 +1,3 @@
-*.rb    ident
-README  ident
+*.rb		ident
+README		ident
+Rakefile	ident
