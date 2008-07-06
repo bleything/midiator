@@ -22,3 +22,4 @@ end
 require 'midiator/interface'
 require 'midiator/driver'
 require 'midiator/driver_registry'
+require 'midiator/notes'
