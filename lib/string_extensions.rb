@@ -11,7 +11,7 @@
 #
 # Copyright (c) 2008 Ben Bleything, except where noted.
 #
-# This code released under the terms of the BSD license.
+# This code released under the terms of the MIT license.
 #
 
 class String

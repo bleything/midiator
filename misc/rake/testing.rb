@@ -10,7 +10,7 @@
 #
 # Copyright (c) 2008 LAIKA, Inc.
 # 
-# This code released under the terms of the BSD license.
+# This code released under the terms of the MIT license.
 #
 
 require 'spec/rake/spectask'
