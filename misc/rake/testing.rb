@@ -26,6 +26,7 @@ namespace :spec do
 	Spec::Rake::SpecTask.new( :coverage ) do |r| 
 		r.rcov      = true
 		r.rcov_dir  = 'coverage'
+		r.rcov_opts = %w( -x Library\/Ruby,^spec )
 		r.libs      = SPEC_FILES
 	end
 end
