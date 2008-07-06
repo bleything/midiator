@@ -45,8 +45,6 @@ class MIDIator::Interface
 	end
 	
 	def play( note, duration = 0.1, channel = 0, velocity = 100 )
-		puts note
-		
 		@driver.note_on( note, channel, velocity )
 		sleep duration
 		@driver.note_off( note, channel, velocity )
