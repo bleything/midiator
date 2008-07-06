@@ -67,11 +67,11 @@ class MIDIator::Driver
 		open
 	end
 	
-	def note_on( channel, note, velocity = 64 )
+	def note_on( note, channel, velocity )
 		message( ON | channel, note, velocity )
 	end
 	
-	def note_off( channel, note, velocity = 64 )
+	def note_off( note, channel, velocity )
 		message( OFF | channel, note, velocity )
 	end
 	
