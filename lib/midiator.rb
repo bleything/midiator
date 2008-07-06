@@ -19,7 +19,8 @@ module MIDIator
 	VERSION = "0.0.1"
 end
 
-require 'midiator/interface'
 require 'midiator/driver'
 require 'midiator/driver_registry'
+require 'midiator/exceptions'
+require 'midiator/interface'
 require 'midiator/notes'
