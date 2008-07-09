@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #
 # A simple example that plays the chromatic scale from C4 to C6 and back
-# again.  Also shows how to use MIDIator::Notes
+# again.  Also shows how to use the MIDIator::Notes mixin.
 #
 # == Authors
 #
