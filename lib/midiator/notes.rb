@@ -13,6 +13,7 @@
 #
 # This code released under the terms of the MIT license.
 #
+
 module MIDIator::Notes
 	##########################################################################
 	### O C T A V E   - 1 ;;; O C T A V E    0    ;;; O C T A V E   1
