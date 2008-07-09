@@ -1,14 +1,16 @@
 #!/usr/bin/env ruby
 #
-# The MIDIator driver to interact with OSX's CoreMIDI.
+# The MIDIator driver to interact with OSX's CoreMIDI.  Taken more or less
+# directly from Practical Ruby Projects.
 #
 # == Authors
 #
+# * Topher Cyll
 # * Ben Bleything <ben@bleything.net>
 #
 # == Copyright
 #
-# Copyright (c) 2008 Ben Bleything
+# Copyright (c) 2008 Topher Cyll
 #
 # This code released under the terms of the MIT license.
 #
