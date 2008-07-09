@@ -75,7 +75,7 @@ class MIDIator::Driver
 		message( OFF | channel, note, velocity )
 	end
 	
-	def program_change( channel, preset )
-		message( PC | channel, preset )
+	def program_change( channel, program )
+		message( PC | channel, program )
 	end
 end

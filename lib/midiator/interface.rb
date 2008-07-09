@@ -49,4 +49,8 @@ class MIDIator::Interface
 		sleep duration
 		@driver.note_off( note, channel, velocity )
 	end
+	
+	def change_patch( channel, program )
+		@driver.program_change( channel, program )
+	end
 end
