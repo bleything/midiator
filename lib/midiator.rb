@@ -23,4 +23,9 @@ require 'midiator/driver'
 require 'midiator/driver_registry'
 require 'midiator/exceptions'
 require 'midiator/interface'
+
+##########################################################################
+### S H O R T C U T   M O D U L E S
+##########################################################################
+require 'midiator/drums'
 require 'midiator/notes'
