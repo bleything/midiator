@@ -1,10 +1,11 @@
 = MIDIator
 
-A Ruby library for interacting with system-level MIDI services.
+A nice Ruby interface to your system's MIDI services.
 
 == Authors
 
- * Ben Bleything <ben@bleything.net>
+* Ben Bleything <ben@bleything.net>
+* Topher Cyll
 
 == General Information
 
