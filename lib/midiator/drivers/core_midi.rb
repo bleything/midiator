@@ -21,11 +21,11 @@ require 'midiator'
 require 'midiator/driver'
 require 'midiator/driver_registry'
 
-class MIDIator::Driver::CoreMIDI < MIDIator::Driver
+class MIDIator::Driver::CoreMIDI < MIDIator::Driver # :nodoc:
 	##########################################################################
 	### S Y S T E M   I N T E R F A C E
 	##########################################################################
-	module C
+	module C # :nodoc:
 		extend DL::Importable
 		dlload '/System/Library/Frameworks/CoreMIDI.framework/Versions/Current/CoreMIDI'
 		
@@ -39,7 +39,7 @@ class MIDIator::Driver::CoreMIDI < MIDIator::Driver
 		extern "int MIDISend( void*, void*, void* )"
 	end
 	
-	module CF
+	module CF # :nodoc:
 		extend DL::Importable
 		dlload '/System/Library/Frameworks/CoreFoundation.framework/Versions/Current/CoreFoundation'
 		

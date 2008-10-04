@@ -30,6 +30,7 @@ class MIDIator::Timer
 		end
 	end
 
+
 	### Add a new job to be performed at +time+.
 	def at( time, &block )
 		time = time.to_f if time.is_a? Time
@@ -40,8 +41,8 @@ class MIDIator::Timer
 	private
 	#######
 	
-	### Check to see if there is work to perform in this timeslice and do it
-	### if so.
+	### Check to see if there is work to perform in this timeslice and 
+	### do it if so.
 	def dispatch
 		now = Time.now.to_f
 		
@@ -51,4 +52,5 @@ class MIDIator::Timer
 		# call all of the "ready" jobs, passing in the time
 		ready.each {|time, proc| proc.call( time ) }
 	end
+
 end

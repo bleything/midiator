@@ -19,6 +19,8 @@ require 'midiator'
 class MIDIator::DriverRegistry
 	include Singleton
 
+	### Stores the given +klass+ in the <tt>@drivers</tt> hash, keyed by +name+.
+	### Typically called via MIDIator::Driver's +inherited+ hook.
 	def register_driver( name, klass )
 		@drivers ||= {}
 		
@@ -36,12 +38,16 @@ class MIDIator::DriverRegistry
 	alias <<       register_driver
 
 
+	### Returns the number of drivers currently registered.
 	def size
 		return @drivers.size
 	end
 
 
+	### Included to make the registry quack like a hash. Delegates to the
+	### <tt>@drivers</tt> hash.
 	def []( name )
 		return @drivers[ name ]
 	end
+	
 end

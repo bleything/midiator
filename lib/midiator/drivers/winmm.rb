@@ -21,8 +21,8 @@ require 'midiator'
 require 'midiator/driver'
 require 'midiator/driver_registry'
 
-class MIDIator::Driver::WinMM < MIDIator::Driver
-	module C
+class MIDIator::Driver::WinMM < MIDIator::Driver # :nodoc:
+	module C # :nodoc:
 		extend DL::Importable
 		dlload 'libasound.so'
 

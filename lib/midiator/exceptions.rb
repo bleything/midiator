@@ -13,4 +13,6 @@
 # This code released under the terms of the MIT license.
 #
 
-class MIDIator::NoMIDIDestinations < Exception ; end
+### Raised when the selected driver is unable to find any available MIDI
+### destinations.
+class MIDIator::NoMIDIDestinations < RuntimeError ; end

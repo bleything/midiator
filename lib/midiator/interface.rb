@@ -19,6 +19,7 @@ require 'midiator'
 class MIDIator::Interface
 	attr_reader :driver
 
+	### Attempts to load the MIDI system driver called +driver_name+.
 	def use( driver_name )
 		driver_path = "midiator/drivers/#{driver_name.to_s}"
 		
@@ -44,12 +45,17 @@ class MIDIator::Interface
 		@driver = Object.module_eval( "::#{driver_class}" ).new
 	end
 	
+	
+	### A little shortcut method for playing the given +note+ for the specified
+	### +duration+.
 	def play( note, duration = 0.1, channel = 0, velocity = 100 )
 		@driver.note_on( note, channel, velocity )
 		sleep duration
 		@driver.note_off( note, channel, velocity )
 	end
-	
+
+
+	### Does nothing for +duration+ seconds.
 	def rest( duration = 0.1 )
 		sleep duration
 	end
@@ -57,4 +63,5 @@ class MIDIator::Interface
 	def change_patch( channel, program )
 		@driver.program_change( channel, program )
 	end
+
 end

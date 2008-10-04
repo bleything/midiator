@@ -14,7 +14,8 @@
 # This code released under the terms of the MIT license.
 #
 
-module MIDIator::Notes
+module MIDIator::Notes # this file does not rdoc well, so uhh.... :nodoc:
+
 	##########################################################################
 	### O C T A V E   - 1 ;;; O C T A V E    0    ;;; O C T A V E   1
 	##########################################################################
@@ -88,4 +89,5 @@ module MIDIator::Notes
 	
 	# Shortcuts!
 	MiddleC = 84
+
 end

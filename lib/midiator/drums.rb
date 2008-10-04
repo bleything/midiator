@@ -14,7 +14,8 @@
 # This code released under the terms of the MIT license.
 #
 
-module MIDIator::Drums
+module MIDIator::Drums # this file does not rdoc well, so uhh.... :nodoc:
+	
 	##########################################################################
 	### G E N E R A L   M I D I   D R U M   N O T E S
 	##########################################################################
@@ -34,4 +35,5 @@ module MIDIator::Drums
 	HighTom1      = 50  ;;;  MuteHighConga = 62  ;;;  Tambourine    = 54 
 	HighTom2      = 48  ;;;  MuteTriangle  = 80  ;;;  VibraSlap     = 58 
 	HighWoodBlock = 76  ;;;  OpenCuica     = 79
+	
 end
