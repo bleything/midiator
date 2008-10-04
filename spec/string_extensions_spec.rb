@@ -5,11 +5,11 @@
 #
 # == Authors
 #
-# * Ben Bleything <bbleything@laika.com>
+# * Ben Bleything <ben@bleything.net>
 #
 # == Copyright
 #
-# Copyright (c) 2008 LAIKA, Inc.
+# Copyright (c) 2008 Ben Bleything
 #
 # This code released under the terms of the MIT license.
 #
