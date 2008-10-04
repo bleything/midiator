@@ -18,7 +18,7 @@ require File.join( File.dirname(__FILE__), 'lib', 'spec_helper.rb' )
 describe MIDIator::Interface do
 	before( :each ) do
 		@driver_name = 'i_like_bees'
-		
+
 		@interface = MIDIator::Interface.new
 		@driver_class = mock( "driver class" )
 	end

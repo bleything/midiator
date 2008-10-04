@@ -37,7 +37,7 @@ Rake::RDocTask.new do |rdoc|
 		'-m', 'README',
 		'-W', 'http://projects.bleything.net/repositories/changes/midiator/',
 	  ]
-	
+
 	rdoc.rdoc_files.include 'README'
 	rdoc.rdoc_files.include 'LICENSE'
 	rdoc.rdoc_files.include 'LICENSE.prp'

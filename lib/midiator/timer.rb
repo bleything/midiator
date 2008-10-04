@@ -21,7 +21,7 @@ class MIDIator::Timer
 	def initialize( resolution )
 		@resolution = resolution
 		@queue = []
-		
+
 		@thread = Thread.new do
 			loop do
 				dispatch
@@ -36,19 +36,19 @@ class MIDIator::Timer
 		time = time.to_f if time.is_a? Time
 		@queue.push [ time, block ]
 	end
-	
+
 	#######
 	private
 	#######
-	
-	### Check to see if there is work to perform in this timeslice and 
+
+	### Check to see if there is work to perform in this timeslice and
 	### do it if so.
 	def dispatch
 		now = Time.now.to_f
-		
+
 		# move "ready" work out of the queue
 		ready, @queue = @queue.partition {|time, proc| time <= now }
-	
+
 		# call all of the "ready" jobs, passing in the time
 		ready.each {|time, proc| proc.call( time ) }
 	end

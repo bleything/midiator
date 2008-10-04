@@ -28,7 +28,7 @@ class String
 	###   "active_record".camelize #=> "ActiveRecord"
 	###   "active_record/errors".camelize #=> "ActiveRecord::Errors"
 	def camelize
-		return self.gsub( /\/(.?)/ ) { 
+		return self.gsub( /\/(.?)/ ) {
 			"::" + $1.upcase
 		}.
 		gsub( /(^|_)(.)/ ) {

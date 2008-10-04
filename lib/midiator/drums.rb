@@ -15,7 +15,7 @@
 #
 
 module MIDIator::Drums # this file does not rdoc well, so uhh.... :nodoc:
-	
+
 	##########################################################################
 	### G E N E R A L   M I D I   D R U M   N O T E S
 	##########################################################################
@@ -30,10 +30,10 @@ module MIDIator::Drums # this file does not rdoc well, so uhh.... :nodoc:
 	CrashCymbal2  = 57  ;;;  LowWoodBlock  = 77  ;;;  ShortWhistle  = 71
 	HandClap      = 39  ;;;  Maracas       = 70  ;;;  SideStick     = 37
 	HighAgogo     = 67  ;;;  MidTom1       = 47  ;;;  SnareDrum1    = 38
-	HighBongo     = 60  ;;;  MidTom2       = 45  ;;;  SnareDrum2    = 40 
-	HighTimbale   = 65  ;;;  MuteCuica     = 78  ;;;  SplashCymbal  = 55 
-	HighTom1      = 50  ;;;  MuteHighConga = 62  ;;;  Tambourine    = 54 
-	HighTom2      = 48  ;;;  MuteTriangle  = 80  ;;;  VibraSlap     = 58 
+	HighBongo     = 60  ;;;  MidTom2       = 45  ;;;  SnareDrum2    = 40
+	HighTimbale   = 65  ;;;  MuteCuica     = 78  ;;;  SplashCymbal  = 55
+	HighTom1      = 50  ;;;  MuteHighConga = 62  ;;;  Tambourine    = 54
+	HighTom2      = 48  ;;;  MuteTriangle  = 80  ;;;  VibraSlap     = 58
 	HighWoodBlock = 76  ;;;  OpenCuica     = 79
-	
+
 end

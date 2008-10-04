@@ -32,9 +32,9 @@ if input = ARGV[0]
 		@tempo = Float( input )
 	rescue ArgumentError => e
 		$stderr.puts "'#{input}' is not a valid tempo.\n"
-		$stderr.puts "Please specify the tempo in beats per minute " + 
+		$stderr.puts "Please specify the tempo in beats per minute " +
 			"(bpm).  Fractional values are allowed!"
-			
+
 		exit 1
 	end
 end

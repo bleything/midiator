@@ -31,7 +31,7 @@ module MIDIator::Notes # this file does not rdoc well, so uhh.... :nodoc:
 	An1  = 9  ;           ;;; A0  = 21 ;          ;;; A1  = 33 ;
 	Asn1 = 10 ; Bbn1 = 10 ;;; As0 = 22 ; Bb0 = 22 ;;; As1 = 34 ; Bb1 = 34
 	Bn1  = 11 ; Cb0  = 11 ;;; B0  = 23 ; Cb1 = 23 ;;; B1  = 35 ; Cb2 = 35
-	
+
 	##########################################################################
 	### O C T A V E   2 ;;; O C T A V E    3    ;;; O C T A V E   4
 	##########################################################################
@@ -47,7 +47,7 @@ module MIDIator::Notes # this file does not rdoc well, so uhh.... :nodoc:
 	A2  = 45 ;          ;;; A3  = 57 ;          ;;; A4  = 69 ;
 	As2 = 46 ; Bb2 = 46 ;;; As3 = 58 ; Bb3 = 58 ;;; As4 = 70 ; Bb4 = 70
 	B2  = 47 ; Cb3 = 47 ;;; B3  = 59 ; Cb4 = 59 ;;; B4  = 71 ; Cb5 = 71
-	
+
 	##########################################################################
 	### O C T A V E   5 ;;; O C T A V E    6    ;;; O C T A V E   7
 	##########################################################################
@@ -86,7 +86,7 @@ module MIDIator::Notes # this file does not rdoc well, so uhh.... :nodoc:
 	A9  = 129 ;
 	As9 = 130 ; Bb9 = 130
 	B9  = 131 ; Cb10 = 131
-	
+
 	# Shortcuts!
 	MiddleC = 84
 

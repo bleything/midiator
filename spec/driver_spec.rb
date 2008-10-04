@@ -23,7 +23,7 @@ describe MIDIator::Driver do
 		# call inherited directly since we can't set up expectations ahead of
 		# time with Class.new( MIDIator::Driver )
 		MIDIator::Driver.inherited( SomeCoolDriver )
-		
+
 		MIDIator::DriverRegistry.instance[ "some_cool_driver" ].should be( SomeCoolDriver )
 	end
 end

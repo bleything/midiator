@@ -22,14 +22,14 @@ class MIDIator::Interface
 	### Attempts to load the MIDI system driver called +driver_name+.
 	def use( driver_name )
 		driver_path = "midiator/drivers/#{driver_name.to_s}"
-		
+
 		begin
 			require driver_path
 		rescue LoadError => e
 			raise LoadError,
 				"Could not load driver '#{driver_name}'."
 		end
-		
+
 		# Fix two side-effects of the camelization process... first, change
 		# instances of Midi to MIDI.  This fixes the acronym form but doesn't
 		# change, for instance, 'timidity'.
@@ -44,8 +44,8 @@ class MIDIator::Interface
 		# level module with the given name.
 		@driver = Object.module_eval( "::#{driver_class}" ).new
 	end
-	
-	
+
+
 	### A little shortcut method for playing the given +note+ for the specified
 	### +duration+.
 	def play( note, duration = 0.1, channel = 0, velocity = 100 )
