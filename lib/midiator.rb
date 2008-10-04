@@ -23,6 +23,7 @@ require 'midiator/driver'
 require 'midiator/driver_registry'
 require 'midiator/exceptions'
 require 'midiator/interface'
+require 'midiator/timer'
 
 ##########################################################################
 ### S H O R T C U T   M O D U L E S
