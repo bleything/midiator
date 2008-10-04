@@ -13,7 +13,7 @@
 # This code released under the terms of the MIT license.
 #
 
-require File.join(File.dirname(__FILE__),"spec_helper.rb")
+require File.join( File.dirname(__FILE__), 'lib', 'spec_helper.rb' )
 
 describe MIDIator::DriverRegistry do
 	before( :all ) do
