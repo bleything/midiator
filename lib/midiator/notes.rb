@@ -85,4 +85,7 @@ module MIDIator::Notes
 	A9  = 129 ;
 	As9 = 130 ; Bb9 = 130
 	B9  = 131 ; Cb10 = 131
+	
+	# Shortcuts!
+	MiddleC = 84
 end
