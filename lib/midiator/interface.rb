@@ -59,9 +59,18 @@ class MIDIator::Interface
 	def rest( duration = 0.1 )
 		sleep duration
 	end
-	
-	def change_patch( channel, program )
-		@driver.program_change( channel, program )
+
+	#######
+	private
+	#######
+
+	### Checks to see if the currently-loaded driver knows how to do +method+ and
+	### passes the message on if so.  Raises an exception (as normal) if not.
+	def method_missing( method, *args )
+		raise NoMethodError, "Neither MIDIator::Interface nor #{@driver.class} " +
+			"has a '#{method}' method." unless @driver.respond_to? method
+
+		return @driver.send( method, *args )
 	end
 
 end

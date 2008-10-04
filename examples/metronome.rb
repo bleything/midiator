@@ -49,7 +49,7 @@ include MIDIator::Notes
 
 @midi = MIDIator::Interface.new
 @midi.use :core_midi
-@midi.change_patch 0, 115 # Wood block!
+@midi.program_change 0, 115 # Wood block!
 
 # trap interrupts to properly kill the timer
 Signal.trap( "INT" ) { @timer.thread.exit! }
