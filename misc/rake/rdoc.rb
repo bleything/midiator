@@ -15,6 +15,10 @@
 
 require 'rake/rdoctask'
 
+# uncomment for darkfish!
+# gem 'darkfish-rdoc'
+# require 'darkfish-rdoc'
+
 ### Task: rdoc
 Rake::RDocTask.new do |rdoc|
 	rdoc.rdoc_dir = 'docs/rdoc'
@@ -24,9 +28,9 @@ Rake::RDocTask.new do |rdoc|
 		'-w', '4',
 		'-SHN',
 		'-i', BASEDIR.to_s,
-		# '-f', 'darkfish',
+		# '-f', 'darkfish', # uncomment for darkfish!
 		'-m', 'README',
-		# '-W', 'http://opensource.laika.com/browser/thingfish/trunk/'
+		'-W', 'http://projects.bleything.net/repositories/changes/midiator/'
 	  ]
 	
 	rdoc.rdoc_files.include 'README'
@@ -34,13 +38,3 @@ Rake::RDocTask.new do |rdoc|
 	rdoc.rdoc_files.include 'LICENSE.prp'
 	rdoc.rdoc_files.include LIB_FILES.collect {|f| f.relative_path_from(BASEDIR).to_s }
 end
-# task :rdoc do
-# 	outputdir = DOCDIR + 'rdoc'
-# 
-# 	rmtree( targetdir )
-# 	cp_r( outputdir, targetdir, :verbose => true )
-# end
-# task :clobber_rdoc do
-# 	rmtree( STATICWWWDIR + 'api', :verbose => true )
-# end
-# 
