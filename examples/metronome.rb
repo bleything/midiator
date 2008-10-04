@@ -51,6 +51,9 @@ include MIDIator::Notes
 @midi.use :core_midi
 @midi.change_patch 0, 115 # Wood block!
 
+# trap interrupts to properly kill the timer
+Signal.trap( "INT" ) { @timer.thread.exit! }
+
 ########################################################################
 ### T I M E R   S E T U P
 ########################################################################
@@ -61,8 +64,8 @@ include MIDIator::Notes
 @timer = MIDIator::Timer.new( @interval / 10 )
 
 def register_next_bang( time )
-	@timer.at( time ) do
-		register_next_bang Time.now.to_f + @interval
+	@timer.at( time ) do |yielded_time|
+		register_next_bang yielded_time + @interval
 		@midi.play MiddleC
 	end
 end
