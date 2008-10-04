@@ -50,6 +50,10 @@ class MIDIator::Interface
 		@driver.note_off( note, channel, velocity )
 	end
 	
+	def rest( duration = 0.1 )
+		sleep duration
+	end
+	
 	def change_patch( channel, program )
 		@driver.program_change( channel, program )
 	end
