@@ -23,21 +23,6 @@ describe MIDIator::Interface do
 		@driver_class = mock( "driver class" )
 	end
 	
-	describe "is abstract" do
-		it "can't play notes" do
-			lambda do
-				@interface.play
-			end.should raise_error( NotImplementedError, /in your interface/ )
-		end
-		
-		it "can't rest" do
-			lambda do
-				@interface.rest
-			end.should raise_error( NotImplementedError, /in your interface/ )
-		end
-	end
-	
-	
 	describe "provides the #use method to load/specify a MIDI driver" do
 		it "requires the driver's file from midiator/drivers" do
 			path = "midiator/drivers/#{@driver_name}"
