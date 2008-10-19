@@ -26,27 +26,24 @@ require 'midiator/driver_registry'
 class MIDIator::Driver::WinMM < MIDIator::Driver # :nodoc:
 	module C # :nodoc:
 		extend DL::Importable
-		dlload 'libasound.so'
+		dlload 'winmm'
 
-		extern "int snd_rawmidi_open( void*, void*, char*, int )"
-		extern "int snd_rawmidi_close( void* )"
-		extern "int snd_rawmidi_write( void*, void*, int )"
-		extern "int snd_rawmidi_drain( void*)"
+		extern "int midiOutOpen(HMIDIOUT*, int, int, int, int)"
+		extern "int midiOutClose(int)"
+		extern "int midiOutShortMsg(int, int)"
 	end
 
 	def open
-		@output = DL::PtrData.new( nil )
-		C.snd_rawmidi_open( nil, @output.ref, "virtual", 0 )
+		@device = DL.malloc(DL.sizeof('I'))
+		C.midiOutOpen(@device, -1, 0, 0, 0)
 	end
 
 	def close
-		C.snd_rawmidi_close( @output )
+		C.midiOutClose(@device.ptr.to_i)
 	end
 
-	def message( *args )
-		format = "C"* args.size
-		bytes = args.pack( format ).to_ptr
-		C.snd_rawmidi_write( @output, bytes, args.size )
-		C.snd_rawmidi_drain( @output )
+	def message(one, two=0, three=0)
+		message = one + (two << 8) + (three << 16)
+		C.midiOutShortMsg(@device.ptr.to_i, message)
 	end
 end
