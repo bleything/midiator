@@ -73,5 +73,15 @@ describe MIDIator::Interface do
 			
 			@interface.use( :alsa )
 		end
+		
+		it "correctly spells WinMM when the WinMM driver is requested" do
+			@interface.stub!( :require )
+			
+			Object.should_receive( :module_eval ).with(
+				"::MIDIator::Driver::WinMM"
+			).and_return( Class.new )
+			
+			@interface.use( :winmm )
+		end
 	end
 end

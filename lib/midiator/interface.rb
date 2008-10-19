@@ -42,6 +42,9 @@ class MIDIator::Interface
 		
 		# special case for the ALSA driver
 		driver_class.sub!( /Alsa/, 'ALSA' )
+		
+		# special case for the WinMM driver
+		driver_class.sub!( /Winmm/, 'WinMM' )
 
 		# this little trick stolen from ActiveSupport.  It looks for a top-
 		# level module with the given name.
