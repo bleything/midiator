@@ -39,6 +39,9 @@ class MIDIator::Interface
 		driver_class = driver_path.camelize.
 			gsub( /Midi/, 'MIDI' ).
 			sub( /::Drivers::/, '::Driver::')
+		
+		# special case for the ALSA driver
+		driver_class.sub!( /Alsa/, 'ALSA' )
 
 		# this little trick stolen from ActiveSupport.  It looks for a top-
 		# level module with the given name.

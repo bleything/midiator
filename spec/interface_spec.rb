@@ -63,5 +63,15 @@ describe MIDIator::Interface do
 			
 			@interface.use( "some_class_that_has_midi_in_its_name" )
 		end
+		
+		it "correctly spells ALSA when the ALSA driver is requested" do
+			@interface.stub!( :require )
+			
+			Object.should_receive( :module_eval ).with(
+				"::MIDIator::Driver::ALSA"
+			).and_return( Class.new )
+			
+			@interface.use( :alsa )
+		end
 	end
 end
