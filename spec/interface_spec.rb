@@ -23,6 +23,47 @@ describe MIDIator::Interface do
 		@driver_class = mock( "driver class" )
 	end
 	
+	describe "auto-detects the correct driver for your platform" do
+		before( :all ) do
+			# remember RUBY_PLATFORM so we can reset it later
+			@ruby_platform = RUBY_PLATFORM
+
+			$stderr.puts "*" * 72
+			$stderr.puts "NOTE: constant redefinition warnings are normal for these specs"
+			$stderr.puts "*" * 72
+		end
+		
+		after( :all ) do
+			# reset RUBY_PLATFORM to whatever is correct for our platform
+			RUBY_PLATFORM = @ruby_platform
+
+			$stderr.puts "*" * 72
+			$stderr.puts "NOTE: you shouldn't see any more warnings"
+			$stderr.puts "*" * 72
+		end
+		
+		it "selects WinMM for Windows" do
+			RUBY_PLATFORM = "i386-win32"
+			@interface.should_receive( :use ).with( :winmm )
+			
+			@interface.autodetect_driver
+		end
+
+		it "selects CoreMIDI for OSX" do
+			RUBY_PLATFORM = "universal-darwin9.0"
+			@interface.should_receive( :use ).with( :core_midi )
+			
+			@interface.autodetect_driver
+		end
+		
+		it "selects ALSA for Linux" do
+			RUBY_PLATFORM = "i486-linux"
+			@interface.should_receive( :use ).with( :alsa )
+			
+			@interface.autodetect_driver
+		end
+	end
+	
 	describe "provides the #use method to load/specify a MIDI driver" do
 		it "requires the driver's file from midiator/drivers" do
 			path = "midiator/drivers/#{@driver_name}"

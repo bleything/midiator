@@ -48,7 +48,7 @@ require 'midiator'
 include MIDIator::Notes
 
 @midi = MIDIator::Interface.new
-@midi.use :core_midi
+@midi.autodetect_driver
 @midi.program_change 0, 115 # Wood block!
 
 # trap interrupts to properly kill the timer

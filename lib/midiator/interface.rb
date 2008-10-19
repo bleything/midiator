@@ -18,6 +18,14 @@ require 'midiator'
 
 class MIDIator::Interface
 	attr_reader :driver
+	
+	### Automatically select a driver to use
+	def autodetect_driver
+		self.use( :winmm     ) if RUBY_PLATFORM.include? 'win32'
+		self.use( :core_midi ) if RUBY_PLATFORM.include? 'darwin'
+		self.use( :alsa      ) if RUBY_PLATFORM.include? 'linux'
+	end
+
 
 	### Attempts to load the MIDI system driver called +driver_name+.
 	def use( driver_name )
@@ -78,5 +86,5 @@ class MIDIator::Interface
 
 		return @driver.send( method, *args )
 	end
-
+	
 end
