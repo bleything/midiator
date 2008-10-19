@@ -31,7 +31,7 @@ Rake::RDocTask.new do |rdoc|
 	rdoc.options += [
 		'-w', '4',
 		'-SHNa',
-		'-i', BASEDIR.to_s,
+		'-i', BASE_DIR.to_s,
 		# '-f', 'darkfish', # uncomment for darkfish!
 		'-T', 'hanna',    # uncomment for hanna!
 		'-m', 'README',
@@ -41,5 +41,5 @@ Rake::RDocTask.new do |rdoc|
 	rdoc.rdoc_files.include 'README'
 	rdoc.rdoc_files.include 'LICENSE'
 	rdoc.rdoc_files.include 'LICENSE.prp'
-	rdoc.rdoc_files.include LIB_FILES.collect {|f| f.relative_path_from(BASEDIR).to_s }
+	rdoc.rdoc_files.include LIB_FILES.collect {|f| f.relative_path_from(BASE_DIR).to_s }
 end

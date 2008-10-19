@@ -18,22 +18,24 @@ require 'rubygems'
 require 'rake'
 
 # Pathname constants
-BASEDIR       = Pathname.new( __FILE__ ).expand_path.dirname.relative_path_from( Pathname.getwd )
-LIBDIR        = BASEDIR + 'lib'
-DOCDIR        = BASEDIR + 'docs'
-MISCDIR       = BASEDIR + 'misc'
-RCOVDIR       = BASEDIR + 'coverage'
-PKGDIR        = BASEDIR + 'pkg'
-SPECDIR       = BASEDIR + 'spec'
-RAKE_TASKDIR  = MISCDIR + 'rake'
+BASE_DIR      = Pathname.new( __FILE__ ).expand_path.dirname.relative_path_from( Pathname.getwd )
+LIB_DIR       = BASE_DIR + 'lib'
+EXAMPLE_DIR   = BASE_DIR + 'examples'
+MISC_DIR      = BASE_DIR + 'misc'
+SPEC_DIR      = BASE_DIR + 'spec'
+RAKE_TASK_DIR = MISC_DIR + 'rake'
 
 # File glob constants
-SPEC_FILES = Pathname.glob( SPECDIR + '**/*_spec.rb' )
-LIB_FILES  = Pathname.glob( LIBDIR + '**/*.rb'       )
+SPEC_FILES    = Pathname.glob( SPEC_DIR    + '**/*_spec.rb' )
+LIB_FILES     = Pathname.glob( LIB_DIR     + '**/*.rb'      )
+EXAMPLE_FILES = Pathname.glob( EXAMPLE_DIR + '**/*.rb'      )
+MISC_FILES    = Pathname.glob( MISC_DIR    + '**/*.rb'      )
+RELEASE_FILES = SPEC_FILES + LIB_FILES + EXAMPLE_FILES + MISC_FILES
 
-$LOAD_PATH.unshift( LIBDIR )
+$LOAD_PATH.unshift( LIB_DIR )
 
-require RAKE_TASKDIR + 'testing.rb'
-require RAKE_TASKDIR + 'rdoc.rb'
+require RAKE_TASK_DIR + 'testing.rb'
+require RAKE_TASK_DIR + 'rdoc.rb'
+require RAKE_TASK_DIR + 'packaging.rb'
 
 task :default => [ :spec ]
