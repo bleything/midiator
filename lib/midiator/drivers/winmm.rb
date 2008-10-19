@@ -17,6 +17,8 @@
 # This code released under the terms of the MIT license.
 #
 
+require 'dl/import'
+
 require 'midiator'
 require 'midiator/driver'
 require 'midiator/driver_registry'
