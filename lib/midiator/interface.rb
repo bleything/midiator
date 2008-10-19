@@ -18,7 +18,7 @@ require 'midiator'
 
 class MIDIator::Interface
 	attr_reader :driver
-	
+
 	### Automatically select a driver to use
 	def autodetect_driver
 		self.use( :winmm     ) if RUBY_PLATFORM.include? 'win32'
@@ -47,10 +47,10 @@ class MIDIator::Interface
 		driver_class = driver_path.camelize.
 			gsub( /Midi/, 'MIDI' ).
 			sub( /::Drivers::/, '::Driver::')
-		
+
 		# special case for the ALSA driver
 		driver_class.sub!( /Alsa/, 'ALSA' )
-		
+
 		# special case for the WinMM driver
 		driver_class.sub!( /Winmm/, 'WinMM' )
 
@@ -86,5 +86,5 @@ class MIDIator::Interface
 
 		return @driver.send( method, *args )
 	end
-	
+
 end
