@@ -31,9 +31,15 @@ class MIDIator::Timer
 	end
 
 
+	### Empty the queue
+	def flush
+		@queue.clear
+	end
+
+
 	### Add a new job to be performed at +time+.
 	def at( time, &block )
-		time = time.to_f if time.is_a? Time
+		time = time.to_f if time.kind_of? Time
 		@queue.push [ time, block ]
 	end
 
