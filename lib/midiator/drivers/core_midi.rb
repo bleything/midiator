@@ -59,9 +59,9 @@ class MIDIator::Driver::CoreMIDI < MIDIator::Driver # :nodoc:
 		@outport = DL::PtrData.new( nil )
 		C.mIDIOutputPortCreate( @client, port_name, @outport.ref )
 
-		number_of_destinations = C.mIDIGetNumberOfDestinations()
-		raise NoMIDIDestinations if number_of_destinations < 1
-		@destination = C.mIDIGetDestination( @midi_destination )
+		number_of_destinations = C.mIDIGetNumberOfDestinations
+		raise MIDIator::NoMIDIDestinations if number_of_destinations < 1
+		@destination = C.mIDIGetDestination( 0 )
 	end
 
 	def close
