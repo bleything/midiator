@@ -16,7 +16,7 @@
 require 'string_extensions'
 
 module MIDIator
-	VERSION = "0.0.1"
+	VERSION = "0.1.0"
 end
 
 require 'midiator/driver'
