@@ -80,13 +80,6 @@ module MIDIator::Notes # this file does not rdoc well, so uhh.... :nodoc:
 	As8 = 118 ; Bb8 = 118
 	B8  = 119 ; Cb9 = 119
 
-	# these notes are not valid MIDI notes but they're here to complete the
-	# octave.  Use at your own risk?
-	Gs9 = 128 ; Ab9 = 128
-	A9  = 129 ;
-	As9 = 130 ; Bb9 = 130
-	B9  = 131 ; Cb10 = 131
-
 	# Shortcuts!
 	MiddleC = 84
 
