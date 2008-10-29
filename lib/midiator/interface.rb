@@ -7,15 +7,16 @@
 #
 # * Ben Bleything <ben@bleything.net>
 #
+# == Contributors
+#
+# * Giles Bowkett
+#
 # == Copyright
 #
 # Copyright (c) 2008 Ben Bleything
 #
 # This code released under the terms of the MIT license.
 #
-
-require 'rubygems'
-require 'platform'
 
 require 'midiator'
 
@@ -32,6 +33,7 @@ class MIDIator::Interface
 		when :linux
 			:alsa
 		end
+
 		self.use(driver)
 	end
 

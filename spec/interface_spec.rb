@@ -6,6 +6,10 @@
 #
 # * Ben Bleything <ben@bleything.net>
 #
+# == Contributors
+#
+# * Giles Bowkett
+#
 # == Copyright
 #
 # Copyright (c) 2008 Ben Bleything
@@ -27,6 +31,7 @@ describe MIDIator::Interface do
 		before( :all ) do
 			# remember platform so we can reset it later
 			@ruby_platform = Platform::IMPL
+
 			# suppress warnings (http://www.ruby-forum.com/topic/127608)
 			$-v = nil
 		end
@@ -34,6 +39,7 @@ describe MIDIator::Interface do
 		after( :all ) do
 			# reset platform to whatever is correct for our platform
 			Platform::IMPL = @ruby_platform
+
 			# restore warnings (http://www.ruby-forum.com/topic/127608)
 			$-v = false
 		end

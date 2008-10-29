@@ -7,6 +7,10 @@
 #
 # * Ben Bleything <ben@bleything.net>
 #
+# == Contributors
+#
+# * Xavier Shay
+#
 # == Copyright
 #
 # Copyright (c) 2008 Ben Bleything

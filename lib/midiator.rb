@@ -13,12 +13,24 @@
 # This code released under the terms of the MIT license.
 #
 
-require 'string_extensions'
-
 module MIDIator
-	VERSION = "0.1.1"
+	VERSION = "0.2.0"
 end
 
+#####################################################################
+###	E X T E R N A L   D E P E N D E N C I E S
+#####################################################################
+require 'rubygems'
+require 'platform'
+
+#####################################################################
+###	C O R E   L I B R A R Y   E X T E N S I O N S
+#####################################################################
+require 'string_extensions'
+
+#####################################################################
+###	M I D I A T O R   C O R E
+#####################################################################
 require 'midiator/driver'
 require 'midiator/driver_registry'
 require 'midiator/exceptions'

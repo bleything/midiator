@@ -39,6 +39,8 @@ gemspec = Gem::Specification.new do |gem|
 		collect {|f| f.relative_path_from(BASE_DIR).to_s }
 	gem.test_files 	= SPEC_FILES.
 		collect {|f| f.relative_path_from(BASE_DIR).to_s }
+
+	gem.add_dependency 'Platform', [">= 0.4.0"]
 end
 
 Rake::GemPackageTask.new( gemspec ) do |task|
