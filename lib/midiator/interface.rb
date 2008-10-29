@@ -14,6 +14,9 @@
 # This code released under the terms of the MIT license.
 #
 
+require 'rubygems'
+require 'platform'
+
 require 'midiator'
 
 class MIDIator::Interface
@@ -21,9 +24,15 @@ class MIDIator::Interface
 
 	### Automatically select a driver to use
 	def autodetect_driver
-		self.use( :winmm     ) if RUBY_PLATFORM.include? 'win32'
-		self.use( :core_midi ) if RUBY_PLATFORM.include? 'darwin'
-		self.use( :alsa      ) if RUBY_PLATFORM.include? 'linux'
+		driver = case Platform::IMPL
+		when :macosx
+			:core_midi
+		when :mswin
+			:winmm
+		when :linux
+			:alsa
+		end
+		self.use(driver)
 	end
 
 
