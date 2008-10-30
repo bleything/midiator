@@ -4,8 +4,8 @@ A nice Ruby interface to your system's MIDI services.
 
 == Authors
 
-* Ben Bleything <ben@bleything.net>
-* Topher Cyll
+* Ben Bleything -- ben@bleything.net
+* Topher Cyll -- http://www.cyll.org
 
 == General Information
 
@@ -36,8 +36,8 @@ deal and you should buy their books.
 Props also go to the folks who have contributed patches.  In alphabetical
 order:
 
-Giles Bowkett:: http://gilesbowkett.blogspot.com
-Xavier Shay::   http://rhnh.net
+* Giles Bowkett -- gilesb@gmail.com
+* Xavier Shay -- http://rhnh.net
 
 == License
 
