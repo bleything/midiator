@@ -19,6 +19,7 @@ require 'midiator'
 
 midi = MIDIator::Interface.new
 midi.autodetect_driver
+midi.instruct_user!
 
 include MIDIator::Notes
 

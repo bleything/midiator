@@ -50,6 +50,7 @@ include MIDIator::Notes
 
 @midi = MIDIator::Interface.new
 @midi.autodetect_driver
+@midi.instruct_user!
 @midi.program_change 0, 115 # Wood block!
 
 # trap interrupts to properly kill the timer
