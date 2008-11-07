@@ -97,4 +97,10 @@ class MIDIator::Driver
 		raise NotImplementedError, "You must implement #message in your driver."
 	end
 
+
+	### The only non-required method.  Override this to give the user instructions
+	### if necessary.
+	def instruct_user!
+	end
+
 end

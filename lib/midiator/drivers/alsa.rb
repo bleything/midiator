@@ -24,6 +24,17 @@ require 'midiator/driver'
 require 'midiator/driver_registry'
 
 class MIDIator::Driver::ALSA < MIDIator::Driver # :nodoc:
+	# tell the user they need to connect to their output
+	def instruct_user!
+		$stderr.puts "[MIDIator] Please connect the MIDIator output port to your input"
+		$stderr.puts "[MIDIator] of choice.  You can use qjackctl or aconnect to do so."
+		$stderr.puts "[MIDIator]"
+		$stderr.puts "[MIDIator] Press enter when you're done."
+
+		gets # wait for the enter
+	end
+
+
 	module C # :nodoc:
 		extend DL::Importable
 		dlload 'libasound.so'
