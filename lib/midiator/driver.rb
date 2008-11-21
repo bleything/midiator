@@ -28,9 +28,12 @@ class MIDIator::Driver
 	# Note off
 	OFF = 0x80
 
+  # Control change
+  CC  = 0xb0
+
 	# Program change
 	PC  = 0xc0
-
+  
 	##########################################################################
 	### M A G I C   H O O K S
 	##########################################################################
@@ -65,6 +68,12 @@ class MIDIator::Driver
 	def note_off( note, channel, velocity = 0 )
 		message( OFF | channel, note, velocity )
 	end
+
+
+  ### Shortcut to send a control change.
+  def control_change( number, channel, value )
+    message( CC | channel, number, value )
+  end
 
 
 	### Shortcut to send a program_change message.
