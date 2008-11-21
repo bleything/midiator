@@ -62,7 +62,7 @@ class MIDIator::Driver
 
 
 	### Shortcut to send a note_off message.
-	def note_off( note, channel, velocity )
+	def note_off( note, channel, velocity = 0 )
 		message( OFF | channel, note, velocity )
 	end
 
