@@ -51,7 +51,7 @@ class MIDIator::Driver::CoreMIDI < MIDIator::Driver # :nodoc:
 	##########################################################################
 
 	def open
-		client_name = CF.cFStringCreateWithCString( nil, "RubyMIDI", 0 )
+		client_name = CF.cFStringCreateWithCString( nil, "MIDIator", 0 )
 		@client = DL::PtrData.new( nil )
 		C.mIDIClientCreate( client_name, nil, nil, @client.ref )
 
