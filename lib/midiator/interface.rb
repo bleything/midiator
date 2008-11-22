@@ -10,6 +10,7 @@
 # == Contributors
 #
 # * Giles Bowkett
+# * Jeremy Voorhis
 #
 # == Copyright
 #
@@ -64,7 +65,10 @@ class MIDIator::Interface
 
 		# special case for the WinMM driver
 		driver_class.sub!( /Winmm/, 'WinMM' )
-
+    
+    # special case for the DLSSynth driver
+    driver_class.sub!( /Dls/, 'DLS' )
+    
 		# this little trick stolen from ActiveSupport.  It looks for a top-
 		# level module with the given name.
 		@driver = Object.module_eval( "::#{driver_class}" ).new
