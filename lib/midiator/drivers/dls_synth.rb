@@ -15,104 +15,105 @@ require 'dl/import'
 require 'dl/struct'
 
 class String
-  def to_bytes
-    bytes = 0
-    self.each_byte do |byte|
-      bytes <<= 8
-      bytes += byte
-    end
-    return bytes
-  end
+	def to_bytes
+		bytes = 0
+		self.each_byte do |byte|
+			bytes <<= 8
+			bytes += byte
+		end
+		return bytes
+	end
 end
 
 class DLSSynth < MIDIator::Driver # :nodoc:
-  
-  attr_accessor :synth
-  
-  module AudioToolbox
-    extend DL::Importable 
-    dlload '/System/Library/Frameworks/AudioToolbox.framework/Versions/Current/AudioToolbox'   
 
-    ComponentDescription = struct [ 
-      "int componentType", 
-      "int componentSubType", 
-      "int componentManufacturer", 
-      "int componentFlags", 
-      "int componentFlagsMask"
-    ]
+	attr_accessor :synth
 
-    AudioUnitManufacturer_Apple    = 'appl'.to_bytes # to_bytes may not be strictly necessary but these are supposed to be 4 byte numbers
-    AudioUnitType_MusicDevice      = 'aumu'.to_bytes
-    AudioUnitSubType_DLSSynth      = 'dls '.to_bytes
-    AudioUnitType_Output           = 'auou'.to_bytes
-    AudioUnitSubType_DefaultOutput = 'def '.to_bytes
+	module AudioToolbox
+		extend DL::Importable 
+		dlload '/System/Library/Frameworks/AudioToolbox.framework/Versions/Current/AudioToolbox'   
 
-    extern 'int NewAUGraph(void *)'
-    extern 'int AUGraphAddNode(void *, ComponentDescription *, void *)'
-    extern 'int AUGraphOpen(void *)'
-    extern 'int AUGraphConnectNodeInput(void *, void *, int, void *, int)'
-    extern 'int AUGraphNodeInfo(void *, void *, ComponentDescription *, void *)'
-    extern 'int AUGraphInitialize(void *)'
-    extern 'int AUGraphStart(void *)'      
-    extern 'int AUGraphStop(void *)'
-    extern 'int DisposeAUGraph(void *)'
+		ComponentDescription = struct [ 
+			"int componentType", 
+			"int componentSubType", 
+			"int componentManufacturer", 
+			"int componentFlags", 
+			"int componentFlagsMask"
+		]
 
-    extern 'void * CAShow(void *)'
+		# to_bytes may not be strictly necessary but these are supposed to be 4 byte numbers
+		AudioUnitManufacturer_Apple    = 'appl'.to_bytes
+		AudioUnitType_MusicDevice      = 'aumu'.to_bytes
+		AudioUnitSubType_DLSSynth      = 'dls '.to_bytes
+		AudioUnitType_Output           = 'auou'.to_bytes
+		AudioUnitSubType_DefaultOutput = 'def '.to_bytes
 
-    extern 'void * MusicDeviceMIDIEvent(void *, int, int, int, int)'      
-  end      
+		extern 'int NewAUGraph(void *)'
+		extern 'int AUGraphAddNode(void *, ComponentDescription *, void *)'
+		extern 'int AUGraphOpen(void *)'
+		extern 'int AUGraphConnectNodeInput(void *, void *, int, void *, int)'
+		extern 'int AUGraphNodeInfo(void *, void *, ComponentDescription *, void *)'
+		extern 'int AUGraphInitialize(void *)'
+		extern 'int AUGraphStart(void *)'      
+		extern 'int AUGraphStop(void *)'
+		extern 'int DisposeAUGraph(void *)'
 
-  protected
-  
-  def require_noerr(action_description, &block)
-    if block.call != 0
-      fail "Failed to #{action_description}"
-    end
-  end
+		extern 'void * CAShow(void *)'
 
-  def open
-    @synth = DL::PtrData.new(nil) 
-    @graph = DL::PtrData.new(nil)
-    synthNode = DL::PtrData.new(nil)
-    outNode = DL::PtrData.new(nil)
+		extern 'void * MusicDeviceMIDIEvent(void *, int, int, int, int)'      
+	end      
 
-    cd = AudioToolbox::ComponentDescription.malloc()
-    cd.componentManufacturer = AudioToolbox::AudioUnitManufacturer_Apple
-    cd.componentFlags = 0
-    cd.componentFlagsMask = 0
+	protected
 
-    require_noerr('create AUGraph') { AudioToolbox.newAUGraph(@graph.ref) }
+	def require_noerr(action_description, &block)
+		if block.call != 0
+			fail "Failed to #{action_description}"
+		end
+	end
 
-    cd.componentType = AudioToolbox::AudioUnitType_MusicDevice
-    cd.componentSubType = AudioToolbox::AudioUnitSubType_DLSSynth
-    require_noerr('add synthNode') { AudioToolbox.aUGraphAddNode(@graph, cd, synthNode.ref) }
+	def open
+		@synth = DL::PtrData.new(nil) 
+		@graph = DL::PtrData.new(nil)
+		synthNode = DL::PtrData.new(nil)
+		outNode = DL::PtrData.new(nil)
 
-    cd.componentType = AudioToolbox::AudioUnitType_Output
-    cd.componentSubType = AudioToolbox::AudioUnitSubType_DefaultOutput
-    require_noerr('add outNode') { AudioToolbox.aUGraphAddNode(@graph, cd, outNode.ref) }
+		cd = AudioToolbox::ComponentDescription.malloc()
+		cd.componentManufacturer = AudioToolbox::AudioUnitManufacturer_Apple
+		cd.componentFlags = 0
+		cd.componentFlagsMask = 0
 
-    require_noerr('open graph') { AudioToolbox.aUGraphOpen(@graph) }
+		require_noerr('create AUGraph') { AudioToolbox.newAUGraph(@graph.ref) }
 
-    require_noerr('connect synth to out') { AudioToolbox.aUGraphConnectNodeInput(@graph, synthNode, 0, outNode, 0) }
+		cd.componentType = AudioToolbox::AudioUnitType_MusicDevice
+		cd.componentSubType = AudioToolbox::AudioUnitSubType_DLSSynth
+		require_noerr('add synthNode') { AudioToolbox.aUGraphAddNode(@graph, cd, synthNode.ref) }
 
-    require_noerr('graph info') { AudioToolbox.aUGraphNodeInfo(@graph, synthNode, nil, @synth.ref) }
-    require_noerr('init graph') { AudioToolbox.aUGraphInitialize(@graph) }
-    require_noerr('start graph') { AudioToolbox.aUGraphStart(@graph) }
-    
-    AudioToolbox.cAShow(@graph) if $DEBUG
-  end
-  
-  def message(*args)
-    arg0 = args[0] || 0
-    arg1 = args[1] || 0
-    arg2 = args[2] || 0
-    AudioToolbox.musicDeviceMIDIEvent(@synth, arg0, arg1, arg2, 0)
-  end
-  
-  def close
-    if @graph
-      AudioToolbox.aUGraphStop(@graph)
-      AudioToolbox.disposeAUGraph(@graph)
-    end
-  end
+		cd.componentType = AudioToolbox::AudioUnitType_Output
+		cd.componentSubType = AudioToolbox::AudioUnitSubType_DefaultOutput
+		require_noerr('add outNode') { AudioToolbox.aUGraphAddNode(@graph, cd, outNode.ref) }
+
+		require_noerr('open graph') { AudioToolbox.aUGraphOpen(@graph) }
+
+		require_noerr('connect synth to out') { AudioToolbox.aUGraphConnectNodeInput(@graph, synthNode, 0, outNode, 0) }
+
+		require_noerr('graph info') { AudioToolbox.aUGraphNodeInfo(@graph, synthNode, nil, @synth.ref) }
+		require_noerr('init graph') { AudioToolbox.aUGraphInitialize(@graph) }
+		require_noerr('start graph') { AudioToolbox.aUGraphStart(@graph) }
+
+		AudioToolbox.cAShow(@graph) if $DEBUG
+	end
+
+	def message(*args)
+		arg0 = args[0] || 0
+		arg1 = args[1] || 0
+		arg2 = args[2] || 0
+		AudioToolbox.musicDeviceMIDIEvent(@synth, arg0, arg1, arg2, 0)
+	end
+
+	def close
+		if @graph
+			AudioToolbox.aUGraphStop(@graph)
+			AudioToolbox.disposeAUGraph(@graph)
+		end
+	end
 end
