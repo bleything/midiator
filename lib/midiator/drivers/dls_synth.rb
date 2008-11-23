@@ -25,7 +25,7 @@ class String
 	end
 end
 
-class DLSSynth < MIDIator::Driver # :nodoc:
+class MIDIator::Driver::DLSSynth < MIDIator::Driver # :nodoc:
 
 	attr_accessor :synth
 
