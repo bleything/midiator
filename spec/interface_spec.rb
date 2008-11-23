@@ -126,5 +126,15 @@ describe MIDIator::Interface do
 
 			@interface.use( :winmm )
 		end
+		
+		it "correctly spells DLSSynth when the DLSSynth driver is requested" do
+			@interface.stub!( :require )
+			
+			Object.should_receive( :module_eval ).with(
+				"::MIDIator::Driver::DLSSynth" 
+			).and_return( Class.new )
+			
+			@interface.use( :dls_synth )
+		end
 	end
 end
