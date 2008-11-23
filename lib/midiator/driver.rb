@@ -6,6 +6,10 @@
 #
 # * Ben Bleything <ben@bleything.net>
 #
+# == Contributors
+#
+# * Jeremy Voorhis <jvoorhis@gmail.com>
+#
 # == Copyright
 #
 # Copyright (c) 2008 Ben Bleything
@@ -28,12 +32,21 @@ class MIDIator::Driver
 	# Note off
 	OFF = 0x80
 
-  # Control change
-  CC  = 0xb0
+	# Polyphonic aftertouch
+	PA  = 0xa0
+
+	# Control change
+	CC  = 0xb0
 
 	# Program change
 	PC  = 0xc0
-  
+
+	# Channel aftertouch
+	CA  = 0xd0
+
+	# Pitch bend
+	PB  = 0xe0
+
 	##########################################################################
 	### M A G I C   H O O K S
 	##########################################################################
@@ -70,16 +83,35 @@ class MIDIator::Driver
 	end
 
 
-  ### Shortcut to send a control change.
-  def control_change( number, channel, value )
-    message( CC | channel, number, value )
-  end
+	### Shortcut to send a polyphonic aftertouch message for an individual note.
+	def aftertouch( note, channel, pressure )
+		message( PA | channel, note, pressure )
+	end
+
+
+	### Shortcut to send a control change.
+	def control_change( number, channel, value )
+		message( CC | channel, number, value )
+	end
 
 
 	### Shortcut to send a program_change message.
 	def program_change( channel, program )
 		message( PC | channel, program )
 	end
+
+
+	### Shortcut to send a channel aftertouch message.
+	def channel_aftertouch( channel, pressure )
+		message( CA | channel, pressure )
+	end
+
+
+	### Shortcut to send a pitch bend message.
+	def bend( channel, value )
+		message( PB | channel, value )
+	end
+
 
 	##########################################################################
 	### D R I V E R   A P I
