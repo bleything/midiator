@@ -15,16 +15,10 @@ and Windows.  As I was reading the book, I noticed some things I would do
 differently, which got me thinking that maybe it would be valuable to package
 up my modifications to the book's code and release it as a gem.
 
-Whether it will be valuable to anybody but myself remains to be seen, but I'm
-hopeful that someone will find a use for this code.
-
 == Features
 
-None yet?
-
-== Synopsis
-
-Coming soon!
+* Cross-platform system for MIDI output
+* Built-in softsynth (OS X only, so far)
 
 == Credits
 
