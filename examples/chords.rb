@@ -2,7 +2,7 @@ require 'rubygems'
 require 'midiator'
  
 midi = MIDIator::Interface.new
-midi.use("dls_synth")
+midi.autodetect_driver
 
 include MIDIator::Notes
 
