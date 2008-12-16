@@ -81,12 +81,17 @@ class MIDIator::Interface
 	end
 
 
-	### A little shortcut method for playing the given +note+ for the specified
-	### +duration+.
+	### A little shortcut method for playing the given +note+ for the
+	### specified +duration+. If +note+ is an array, all notes in it are
+	### played as a chord.
 	def play( note, duration = 0.1, channel = 0, velocity = 100 )
-		@driver.note_on( note, channel, velocity )
+    [notes].flatten.each do |note|
+      @driver.note_on( note, channel, velocity )
+    end
 		sleep duration
-		@driver.note_off( note, channel, velocity )
+    [notes].flatten.each do |note|
+      @driver.note_off( note, channel, velocity )
+    end 
 	end
 
 
