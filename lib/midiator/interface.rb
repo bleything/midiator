@@ -33,8 +33,15 @@ class MIDIator::Interface
 			:winmm
 		when :linux
 			:alsa
+    else
+      if defined?(Java) &&
+          Java::java.lang.System.get_property('os.name') == 'Mac OS X'
+        :mmj
+      else
+        raise "No driver is available."
+      end
 		end
-
+    
 		self.use(driver)
 	end
 
