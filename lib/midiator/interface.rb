@@ -85,12 +85,12 @@ class MIDIator::Interface
 	### specified +duration+. If +note+ is an array, all notes in it are
 	### played as a chord.
 	def play( note, duration = 0.1, channel = 0, velocity = 100 )
-    [notes].flatten.each do |note|
-      @driver.note_on( note, channel, velocity )
+    [note].flatten.each do |n|
+      @driver.note_on( n, channel, velocity )
     end
 		sleep duration
-    [notes].flatten.each do |note|
-      @driver.note_off( note, channel, velocity )
+    [note].flatten.each do |n|
+      @driver.note_off( n, channel, velocity )
     end 
 	end
 
