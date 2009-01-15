@@ -17,7 +17,7 @@ require 'rubygems'
 require 'midiator'
 
 midi = MIDIator::Interface.new
-midi.use("dls_synth")
+midi.use :dls_synth
 midi.instruct_user!
 
 include MIDIator::Notes
