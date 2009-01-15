@@ -1,3 +1,18 @@
+#!/usr/bin/env ruby
+#
+# A simple example of playing chords with MIDIator
+#
+# == Authors
+#
+# * David Brady <dbrady@shinybit.com>
+#
+# == Copyright
+#
+# Copyright (c) 2008 David Brady
+#
+# This code released under the terms of the MIT license.
+#
+
 require 'rubygems'
 require 'midiator'
  
@@ -17,4 +32,3 @@ song = [ C3, C4MAJ, C3, C4MAJ, F3, F4MAJII, F3, F4MAJII, G3, G4MAJ, G3, G4MAJ, C
     midi.play note, 0.25
   end
 end
-

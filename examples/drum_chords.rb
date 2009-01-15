@@ -1,5 +1,18 @@
 #!/usr/bin/env ruby
+#
 # Plays a simple polyphonic drumbeat.
+#
+# == Authors
+#
+# * David Brady <dbrady@shinybit.com>
+#
+# == Copyright
+#
+# Copyright (c) 2008 David Brady
+#
+# This code released under the terms of the MIT license.
+#
+
 require 'rubygems'
 require 'midiator'
  
@@ -34,4 +47,3 @@ midi.play CrashCymbal2, 0.25, 10
     midi.play note, 0.25, 10
   end
 end
- 
