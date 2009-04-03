@@ -29,7 +29,7 @@ class MIDIator::Interface
     driver = case Platform::IMPL
     when :macosx
       :core_midi
-    when :mswin
+    when :mswin, :cygwin
       :winmm
     when :linux
       :alsa
