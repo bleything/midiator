@@ -15,13 +15,9 @@
 
 require 'rake/rdoctask'
 
-# uncomment for darkfish!
-# gem 'darkfish-rdoc'
-# require 'darkfish-rdoc'
-
 # uncomment for hanna!
-gem 'mislav-hanna'
-require 'hanna'
+# gem 'mislav-hanna'
+# require 'hanna'
 
 ### Task: rdoc
 Rake::RDocTask.new do |rdoc|
@@ -32,8 +28,7 @@ Rake::RDocTask.new do |rdoc|
     '-w', '4',
     '-SHNa',
     '-i', BASE_DIR.to_s,
-    # '-f', 'darkfish', # uncomment for darkfish!
-    '-T', 'hanna',    # uncomment for hanna!
+    # '-T', 'hanna',    # uncomment for hanna!
     '-m', 'README',
     '-W', 'http://projects.bleything.net/repositories/changes/midiator/',
     ]
