@@ -28,15 +28,15 @@
 @tempo = 120.0
 
 if input = ARGV[0]
-	begin
-		@tempo = Float( input )
-	rescue ArgumentError => e
-		$stderr.puts "'#{input}' is not a valid tempo.\n"
-		$stderr.puts "Please specify the tempo in beats per minute " +
-			"(bpm).  Fractional values are allowed!"
+  begin
+    @tempo = Float( input )
+  rescue ArgumentError => e
+    $stderr.puts "'#{input}' is not a valid tempo.\n"
+    $stderr.puts "Please specify the tempo in beats per minute " +
+      "(bpm).  Fractional values are allowed!"
 
-		exit 1
-	end
+    exit 1
+  end
 end
 
 require 'rubygems'
@@ -66,10 +66,10 @@ Signal.trap( "INT" ) { @timer.thread.exit! }
 @timer = MIDIator::Timer.new( @interval / 10 )
 
 def register_next_bang( time )
-	@timer.at( time ) do |yielded_time|
-		register_next_bang yielded_time + @interval
-		@midi.play MiddleC
-	end
+  @timer.at( time ) do |yielded_time|
+    register_next_bang yielded_time + @interval
+    @midi.play MiddleC
+  end
 end
 
 puts "Starting metronome running at #{@tempo} bpm."

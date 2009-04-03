@@ -21,15 +21,15 @@ class MIDIator::Driver::Mmj < MIDIator::Driver # :nodoc:
     }.first
   end
   
-	def open( output = 0 )
+  def open( output = 0 )
     @out = MidiSystem.open_midi_output( output )
-	end
+  end
   
-	def message( *args )
+  def message( *args )
     @out.send_midi( args.to_java(:byte) )
-	end
+  end
   
-	def close
+  def close
     MidiSystem.close_midi_system
-	end
+  end
 end

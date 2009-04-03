@@ -15,48 +15,48 @@
 #
 
 class MIDIator::Timer
-	attr_reader :resolution, :queue, :thread
+  attr_reader :resolution, :queue, :thread
 
-	### Create a new Timer object that ticks every +resolution+ seconds.
-	def initialize( resolution )
-		@resolution = resolution
-		@queue = []
+  ### Create a new Timer object that ticks every +resolution+ seconds.
+  def initialize( resolution )
+    @resolution = resolution
+    @queue = []
 
-		@thread = Thread.new do
-			loop do
-				dispatch
-				sleep @resolution
-			end
-		end
-	end
-
-
-	### Empty the queue
-	def flush
-		@queue.clear
-	end
+    @thread = Thread.new do
+      loop do
+        dispatch
+        sleep @resolution
+      end
+    end
+  end
 
 
-	### Add a new job to be performed at +time+.
-	def at( time, &block )
-		time = time.to_f if time.kind_of? Time
-		@queue.push [ time, block ]
-	end
+  ### Empty the queue
+  def flush
+    @queue.clear
+  end
 
-	#######
-	private
-	#######
 
-	### Check to see if there is work to perform in this timeslice and
-	### do it if so.
-	def dispatch
-		now = Time.now.to_f
+  ### Add a new job to be performed at +time+.
+  def at( time, &block )
+    time = time.to_f if time.kind_of? Time
+    @queue.push [ time, block ]
+  end
 
-		# move "ready" work out of the queue
-		ready, @queue = @queue.partition {|time, proc| time <= now }
+  #######
+  private
+  #######
 
-		# call all of the "ready" jobs, passing in the time
-		ready.each {|time, proc| proc.call( time ) }
-	end
+  ### Check to see if there is work to perform in this timeslice and
+  ### do it if so.
+  def dispatch
+    now = Time.now.to_f
+
+    # move "ready" work out of the queue
+    ready, @queue = @queue.partition {|time, proc| time <= now }
+
+    # call all of the "ready" jobs, passing in the time
+    ready.each {|time, proc| proc.call( time ) }
+  end
 
 end
