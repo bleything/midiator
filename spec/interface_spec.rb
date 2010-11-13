@@ -72,8 +72,8 @@ describe MIDIator::Interface do
       @interface.should_receive( :require ).with( path )
 
       # stub out the rest of #use
-      Object.should_receive( :module_eval ).and_return( 
-        mock( 'foo', :null_object => true )
+      Object.should_receive( :module_eval ).and_return(
+        mock( 'foo' ).as_null_object
       )
 
       @interface.use( @driver_name )
