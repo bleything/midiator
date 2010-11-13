@@ -14,7 +14,7 @@
 # This code released under the terms of the MIT license.
 #
 
-require File.join( File.dirname(__FILE__), 'lib', 'spec_helper.rb' )
+require 'midiator'
 
 describe "MIDIator's extensions to Ruby's String class" do
   it "converts under_scored strings to CamelCase" do
