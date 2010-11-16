@@ -15,4 +15,7 @@ Hoe.spec 'midiator' do
   self.extra_dev_deps << [ 'rspec', '>= 2.1.0' ]
   self.testlib = :rspec
 
+  ### build zip files too
+  self.need_zip = true
+
 end
