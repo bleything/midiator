@@ -30,7 +30,7 @@ describe MIDIator::Interface do
   describe "auto-detects the correct driver for your platform" do
     before( :all ) do
       # remember platform so we can reset it later
-      @ruby_platform = Platform::IMPL
+      @ruby_platform = RUBY_PLATFORM
 
       # suppress warnings (http://www.ruby-forum.com/topic/127608)
       $-v = nil
@@ -38,28 +38,35 @@ describe MIDIator::Interface do
 
     after( :all ) do
       # reset platform to whatever is correct for our platform
-      Platform::IMPL = @ruby_platform
+      RUBY_PLATFORM = @ruby_platform
 
       # restore warnings (http://www.ruby-forum.com/topic/127608)
       $-v = false
     end
 
-    it "selects WinMM for Windows" do
-      Platform::IMPL = :mswin
+    it "selects WinMM for Windows/RubyInstaller" do
+      RUBY_PLATFORM = "i386-mingw32"
+      @interface.should_receive( :use ).with( :winmm )
+
+      @interface.autodetect_driver
+    end
+
+    it "selects WinMM for Windows/cygwin" do
+      RUBY_PLATFORM = "i386-cygwin"
       @interface.should_receive( :use ).with( :winmm )
 
       @interface.autodetect_driver
     end
 
     it "selects CoreMIDI for OSX" do
-      Platform::IMPL = :macosx
+      RUBY_PLATFORM = "universal-darwin10.0"
       @interface.should_receive( :use ).with( :core_midi )
 
       @interface.autodetect_driver
     end
 
     it "selects ALSA for Linux" do
-      Platform::IMPL = :linux
+      RUBY_PLATFORM = "x86_64-linux"
       @interface.should_receive( :use ).with( :alsa )
 
       @interface.autodetect_driver

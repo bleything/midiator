@@ -8,9 +8,6 @@ Hoe.spec 'midiator' do
   self.history_file = 'CHANGELOG.md'
   self.readme_file  = 'README.md'
 
-  ### Depend on Platform
-  self.extra_deps << [ 'Platform', '>= 0.4.0' ]
-
   ### Test with rspec
   self.extra_dev_deps << [ 'rspec', '>= 2.1.0' ]
   self.testlib = :rspec
