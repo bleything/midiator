@@ -24,7 +24,7 @@ require 'midiator/driver_registry'
 class MIDIator::Driver::CoreMIDI < MIDIator::Driver # :nodoc:
 
   # Figure out if we have SnowLeopard
-  SNOW_LEOPARD = = `uname -r` =~ /10\.\d\.\d/
+  SNOW_LEOPARD = `uname -r` =~ /10\.\d\.\d/
 
   ##########################################################################
   ### S Y S T E M   I N T E R F A C E
