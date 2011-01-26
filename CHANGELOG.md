@@ -1,5 +1,10 @@
 # midiator Changelog
 
+### 0.4.0 / 2011-01-25
+
+* minor tweaks to packaging
+* remove dependency on Platform gem
+
 ### 0.3.3 / 2010-11-13
 
 * convert build system to hoe
