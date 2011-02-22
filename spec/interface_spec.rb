@@ -60,7 +60,7 @@ describe MIDIator::Interface do
 
     it "selects CoreMIDI for OSX" do
       RUBY_PLATFORM = "universal-darwin10.0"
-      @interface.should_receive( :use ).with( :core_midi )
+      @interface.should_receive( :use ).with( :dls_synth )
 
       @interface.autodetect_driver
     end

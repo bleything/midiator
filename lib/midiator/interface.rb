@@ -28,7 +28,7 @@ class MIDIator::Interface
   def autodetect_driver
     driver = case RUBY_PLATFORM
     when /darwin/
-      :core_midi
+      :dls_synth
     when /cygwin/, /mingw/
       :winmm
     when /linux/
