@@ -1,5 +1,9 @@
 # midiator Changelog
 
+### 0.5.1 / 2011-02-22
+
+* tweak Rakefile for gem test
+
 ### 0.5.0 / 2011-02-22
 
 * OSX now defaults to DLS Synth
