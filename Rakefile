@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'hoe'
 
+Hoe.plugin :git, :doofus, :seattlerb
+
 Hoe.spec 'midiator' do
   developer 'Ben Bleything', 'ben@bleything.net'
 
