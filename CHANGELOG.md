@@ -1,5 +1,9 @@
 # midiator Changelog
 
+### 0.5.0 / 2011-02-22
+
+* OSX now defaults to DLS Synth
+
 ### 0.4.0 / 2011-01-25
 
 * minor tweaks to packaging
