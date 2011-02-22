@@ -18,3 +18,6 @@ Hoe.spec 'midiator' do
   self.need_zip = true
 
 end
+
+# add pointer so gem test works. bleh.
+task :test => [:spec]
