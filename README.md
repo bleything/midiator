@@ -2,6 +2,23 @@
 
 * http://github.com/bleything/midiator
 
+## Warning! Dead Project Ahead!
+
+As you've no doubt noticed, I've not been maintaining MIDIator for
+some time. Frankly, I published this gem out of a personal need that
+no longer exists, and then I lazily chose to neglect my obligation to
+the community. I apologize for the lack of maintenance.
+
+I **strongly** recommend that you migrate to Ari Russo's [unimidi]
+library as soon as possible. It looks a lot nicer than MIDIator and
+it's actively maintained.
+
+[unimidi]: https://github.com/arirusso/unimidi
+
+Thanks for the interest and support!
+
+-Ben
+
 ## DESCRIPTION:
 
 A nice Ruby interface to your system's MIDI services.
